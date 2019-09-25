@@ -14,33 +14,23 @@ const ngrok =
 const { resolve } = require('path');
 
 const app = express();
+const wordsRoutes = require('./routes/words');
 app.use(express.json());
 
-const words = ['apple', 'banana', 'carrot', 'durian'];
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
 
-/**
- * endpoint for GET requests
- */
-app.get('/api/words', (req, res, next) => {
-  try {
-    return res.json({ words });
-  } catch (err) {
-    return next(err);
-  }
-});
+app.use('/api/words', wordsRoutes);
 
-/**
- * endpoint for POST requests
- */
-app.post('/api/words', (req, res, next) => {
-  try {
-    words.push(req.body.word);
-    return res.json({ words });
-  } catch (err) {
-    return next(err);
-  }
+/** general error handler */
+
+app.use((err, req, res, next) => {
+  res.status(err.status || 500);
+
+  return res.json({
+    status: err.status,
+    message: err.message,
+  });
 });
 
 // In production we need to pass these values in instead of relying on webpack
@@ -59,17 +49,6 @@ app.get('*.js', (req, res, next) => {
   req.url = req.url + '.gz'; // eslint-disable-line
   res.set('Content-Encoding', 'gzip');
   next();
-});
-
-/** general error handler */
-
-app.use((err, req, res, next) => {
-  res.status(err.status || 500);
-
-  return res.json({
-    status: err.status,
-    message: err.message,
-  });
 });
 
 // Start your app.
