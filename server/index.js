@@ -21,7 +21,7 @@ const words = ['apple', 'banana', 'carrot', 'durian'];
 // app.use('/api', myApi);
 
 /**
- * url for GET requests
+ * endpoint for GET requests
  */
 app.get('/api/words', (req, res, next) => {
   try {
@@ -31,6 +31,9 @@ app.get('/api/words', (req, res, next) => {
   }
 });
 
+/**
+ * endpoint for POST requests
+ */
 app.post('/api/words', (req, res, next) => {
   try {
     words.push(req.body.word);
