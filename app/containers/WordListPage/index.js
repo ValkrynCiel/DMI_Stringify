@@ -6,7 +6,7 @@ export default class WordListPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      words: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l'],
+      words: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'kangeroo', 'longlonglonglonglonglonglongwordlonglonglonglonglonglonglongword','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'],
     };
   }
 
@@ -14,7 +14,7 @@ export default class WordListPage extends Component {
     return (
       <WordList>
         {this.state.words.map((w, i) => (
-          <WordDisplay key={w} i={i}>
+          <WordDisplay key={i} i={i}>
             <p>{w}</p>
           </WordDisplay>
         ))}

@@ -7,7 +7,7 @@ import HomeLink from './HomeLink';
 
 export default function NavBar() {
   const activeStyle = {
-    color: 'teal',
+    color: '#028080',
   };
 
   return (

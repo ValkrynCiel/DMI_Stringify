@@ -5,28 +5,20 @@ const GlobalStyle = createGlobalStyle`
   body {
     height: 100vh;
     width: 100vw;
+    font-family: 'Josefin Sans', sans-serif;
+    overflow: hidden;
   }
-
+  
   body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #FED766;
   }
-
-  body.fontLoaded {
-    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  }
-
+  
   #app {
-    background-color: #fafafa;
-    height: 100vh
+    height: calc(100vh - 75px);
     width: 100vw;
-    padding-top: 75px;
+    margin-top: 75px;
     overflow-y: scroll;
-  }
-
-  p,
-  label {
-    font-family: Georgia, Times, 'Times New Roman', serif;
-    line-height: 1.5em;
+    display: flex;
   }
 `;
 
