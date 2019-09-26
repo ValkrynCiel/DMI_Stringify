@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-export default styled(Link)`
-  margin-top: 7px;
+export default styled(NavLink)`
+  margin-top: 10px;
   margin-right: 50px;
   font-size: 25px;
   display: block;
