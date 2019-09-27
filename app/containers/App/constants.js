@@ -8,3 +8,7 @@
  * Follow this format:
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
+
+export const LOAD_WORDS = 'dmitakehome/App/LOAD_WORDS';
+export const LOAD_WORDS_SUCCESS = 'dmitakehome/App/LOAD_WORDS_SUCCESS';
+export const LOAD_WORDS_ERROR = 'dmitakehome/App/LOAD_WORDS_ERROR';

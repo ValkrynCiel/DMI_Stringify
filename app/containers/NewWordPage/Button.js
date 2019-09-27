@@ -1,14 +1,5 @@
-import styled, { keyframes } from 'styled-components';
-import Arrow from './Arrow';
-
-const moveArrow = keyframes`
-  0% {
-    transform: translateX(-20px) rotate(45deg);
-  }
-  100% {
-    transform: translateX(10px) rotate(45deg);
-  }
-`;
+import styled from 'styled-components';
+import Arrow, { moveArrow } from './Arrow';
 
 export default styled.button`
   height: 140px;

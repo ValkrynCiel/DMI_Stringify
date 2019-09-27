@@ -24,7 +24,8 @@ router.get('/', (req, res, next) => {
  */
 router.post('/', (req, res, next) => {
   try {
-    words.push(req.body.word);
+    // prepends word to array
+    words.unshift(req.body.word);
     return res.json({ words });
   } catch (err) {
     return next(err);

@@ -1,4 +1,13 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+export const moveArrow = keyframes`
+  0% {
+    transform: translateX(-20px) rotate(45deg);
+  }
+  100% {
+    transform: translateX(10px) rotate(45deg);
+  }
+`;
 
 export default styled.div`
   border: solid black;

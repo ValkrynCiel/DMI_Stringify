@@ -27,3 +27,23 @@ export default class WordListPage extends Component {
     );
   }
 }
+
+const mapStateToProps = createStructuredSelector({
+  words: makeSelectWords(),
+  loading: makeSelectLoading(),
+  error: makeSelectError(),
+});
+
+const mapDispatchToProps = {
+  loadWords: () =>
+}
+
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
+
+export default compose(
+  withReducer,
+  withConnect,
+)(YourComponent);
