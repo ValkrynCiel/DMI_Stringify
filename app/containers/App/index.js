@@ -11,7 +11,7 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
-import NewWordPage from 'containers/NewWordPage/NewWordForm';
+import NewWordPage from 'containers/NewWordPage';
 import WordListPage from 'containers/WordListPage/Loadable';
 
 import NavBar from 'components/NavBar';

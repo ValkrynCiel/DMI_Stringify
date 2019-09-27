@@ -19,6 +19,8 @@ const GlobalStyle = createGlobalStyle`
     margin-top: 75px;
     overflow-y: scroll;
     display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 `;
 

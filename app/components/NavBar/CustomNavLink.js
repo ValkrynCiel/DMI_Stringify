@@ -10,7 +10,7 @@ export default styled(NavLink)`
     bottom: -3px;
     display: block;
     content: '';
-    border-bottom: solid 3px #23B5D3;
+    border-bottom: solid 3px white;
     transform: scaleX(0);
     transition: transform 250ms ease-in-out;
   }

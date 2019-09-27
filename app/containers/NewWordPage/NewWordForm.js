@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import Arrow from './Arrow';
+import Form from './Form';
+import Button from './Button';
+import Input from './Input';
 
 export default class NewWordForm extends Component {
   constructor(props) {
@@ -26,16 +30,18 @@ export default class NewWordForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="string">New word:</label>
-        <input
+      <Form onSubmit={this.handleSubmit}>
+        <Input
           id="string"
           name="string"
           value={this.state.string}
           onChange={this.handleChange}
+          autoComplete="off"
         />
-        <button type="submit">Send</button>
-      </form>
+        <Button type="submit">
+          <Arrow />
+        </Button>
+      </Form>
     );
   }
 }

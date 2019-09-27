@@ -4,8 +4,8 @@ export default styled.div`
   height: 125px;
   width: 300px;
   border-radius: 20px;
-  background-color: ${props => (props.i % 2 === 1 ? 'teal' : '#23B5D3')};
-  border: 1px solid black;
+  background-color: ${props => (props.i % 2 === 1 ? 'teal' : '#33658A')};
+  border-bottom: rebeccapurple solid 2px;
   font-size: 20px;
   box-shadow: 0px 10px 10px rgba(196, 149, 65, 1);
   display: flex;
