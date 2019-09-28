@@ -12,3 +12,7 @@
 export const LOAD_WORDS = 'dmitakehome/App/LOAD_WORDS';
 export const LOAD_WORDS_SUCCESS = 'dmitakehome/App/LOAD_WORDS_SUCCESS';
 export const LOAD_WORDS_ERROR = 'dmitakehome/App/LOAD_WORDS_ERROR';
+export const ADD_WORD = 'dmitakehome/App/ADD_WORD';
+export const ADD_WORD_SUCCESS = 'dmitakehome/App/ADD_WORD_SUCCESS';
+export const ADD_WORD_ERROR = 'dmitakehome/App/ADD_WORD_ERROR';
+export const CLEAR_NOTIFICATION = 'dmitakehome/App/CLEAR_NOTIFICATION';

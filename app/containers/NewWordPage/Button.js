@@ -15,7 +15,7 @@ export default styled.button`
   }
   &:hover ${Arrow} {
     margin-left: 10px;
-    animation: ${moveArrow} 1.5s ease-out infinite;
+    animation: ${moveArrow} 1.5s ease infinite;
     border-color: white;
   }
   &:focus {

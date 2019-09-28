@@ -22,7 +22,7 @@ import { LOAD_WORDS, LOAD_WORDS_SUCCESS, LOAD_WORDS_ERROR } from './constants';
  *
  * @return {object} An action object with a type of LOAD_WORDS
  */
-export function loadRepos() {
+export function loadWords() {
   return {
     type: LOAD_WORDS,
   };
@@ -35,7 +35,7 @@ export function loadRepos() {
  *
  * @return {object}      An action object with a type of LOAD_WORDS_SUCCESS passing the repos
  */
-export function reposLoaded(words) {
+export function wordsLoaded(words) {
   return {
     type: LOAD_WORDS_SUCCESS,
     words,
@@ -49,7 +49,7 @@ export function reposLoaded(words) {
  *
  * @return {object}       An action object with a type of LOAD_WORDS_ERROR passing the error
  */
-export function repoLoadingError(error) {
+export function wordLoadingError(error) {
   return {
     type: LOAD_WORDS_ERROR,
     error,

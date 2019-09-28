@@ -1,28 +1,49 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import injectReducer from 'utils/injectReducer';
+import reducer from 'containers/App/reducer';
+import injectSaga from 'utils/injectSaga';
+import saga from 'containers/App/saga';
+import { createStructuredSelector } from 'reselect';
+import {
+  makeSelectWords,
+  makeSelectLoading,
+  makeSelectError,
+} from 'containers/App/selectors';
+import { loadWords } from 'containers/App/actions';
 import H2 from 'components/H2';
 import PageWrapper from './PageWrapper';
 import WordList from './WordList';
 import WordDisplay from './WordDisplay';
 
-export default class WordListPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      words: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'kangeroo', 'longlonglonglonglonglonglongwordlonglonglonglonglonglonglongword','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'],
-    };
+const key = 'global';
+
+class WordListPage extends Component {
+  async componentDidMount() {
+    if (!this.props.words) {
+      await this.props.loadWords();
+    }
   }
 
   render() {
-    return (
+    const { loading, error, words } = this.props;
+    return loading ? (
+      <h1>loading</h1>
+    ) : (
       <PageWrapper>
         <H2>Word List</H2>
-        <WordList>
-          {this.state.words.map((w, i) => (
-            <WordDisplay key={i} i={i}>
-              <p>{w}</p>
-            </WordDisplay>
-          ))}
-        </WordList>
+        {error ? (
+          <h1>{error}</h1>
+        ) : (
+          <WordList>
+            {words.map((w, i) => (
+              <WordDisplay key={i} i={i}>
+                <p>{w}</p>
+              </WordDisplay>
+            ))}
+          </WordList>
+        )}
       </PageWrapper>
     );
   }
@@ -35,8 +56,12 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = {
-  loadWords: () =>
-}
+  loadWords: () => loadWords(),
+};
+
+const withSaga = injectSaga({ key, saga });
+
+const withReducer = injectReducer({ key, reducer });
 
 const withConnect = connect(
   mapStateToProps,
@@ -46,4 +71,5 @@ const withConnect = connect(
 export default compose(
   withReducer,
   withConnect,
-)(YourComponent);
+  withSaga,
+)(WordListPage);

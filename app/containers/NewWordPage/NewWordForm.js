@@ -16,7 +16,6 @@ export default class NewWordForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(`sending ${this.state.string}`);
     this.setState({
       string: '',
     });
