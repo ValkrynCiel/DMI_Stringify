@@ -14,11 +14,11 @@ export default function NavBar() {
     <NavBarWrapper>
       <HomeLink to="/" />
       <NavLinkGroup>
-        <CustomNavLink exact to="/words" activeStyle={activeStyle}>
-          Word List
+        <CustomNavLink exact to="/strings" activeStyle={activeStyle}>
+          String List
         </CustomNavLink>
-        <CustomNavLink exact to="/words/new" activeStyle={activeStyle}>
-          Add a word
+        <CustomNavLink exact to="/strings/new" activeStyle={activeStyle}>
+          Add a string
         </CustomNavLink>
       </NavLinkGroup>
     </NavBarWrapper>

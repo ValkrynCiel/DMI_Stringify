@@ -11,8 +11,8 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
-import NewWordPage from 'containers/NewWordPage';
-import WordListPage from 'containers/WordListPage/Loadable';
+import NewStringPage from 'containers/NewStringPage';
+import StringListPage from 'containers/StringListPage/Loadable';
 
 import NavBar from 'components/NavBar';
 
@@ -24,8 +24,8 @@ export default function App() {
       <NavBar />
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/words" component={WordListPage} />
-        <Route exact path="/words/new" component={NewWordPage} />
+        <Route exact path="/strings" component={StringListPage} />
+        <Route exact path="/strings/new" component={NewStringPage} />
         <Redirect to="/" />
       </Switch>
       <GlobalStyle />

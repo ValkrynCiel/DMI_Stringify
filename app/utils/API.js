@@ -1,16 +1,16 @@
 import axios from 'axios';
 
 class API {
-  static API_URL = 'http://localhost:3000/api/words';
+  static API_URL = 'http://localhost:3000/api/strings';
 
-  static async getWords() {
+  static async getStrings() {
     try {
       const { data } = await axios.get(this.API_URL);
 
-      if (!data.words) {
+      if (!data.strings) {
         throw Error('Oops! Something went wrong on our part.');
       }
-      return data.words;
+      return data.strings;
     } catch (err) {
       if (err.message.includes('Network Error')) {
         throw Error(
@@ -21,11 +21,16 @@ class API {
     }
   }
 
-  static async postWord(word) {
-    const res = await axios.post(this.API_URL, {
-      word,
-    });
-    return res.word;
+  static async postString(id, string) {
+    try {
+      const res = await axios.post(this.API_URL, {
+        string,
+        id,
+      });
+      return res.strings;
+    } catch (err) {
+      throw Error('something went wrong');
+    }
   }
 }
 

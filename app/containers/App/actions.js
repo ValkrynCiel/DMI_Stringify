@@ -15,43 +15,76 @@
  *    }
  */
 
-import { LOAD_WORDS, LOAD_WORDS_SUCCESS, LOAD_WORDS_ERROR } from './constants';
+import {
+  LOAD_STRINGS,
+  LOAD_STRINGS_SUCCESS,
+  LOAD_STRINGS_ERROR,
+  ADD_STRING,
+  ADD_STRING_ERROR,
+  ADD_STRING_SUCCESS,
+  CLEAR_NOTIFICATION,
+} from './constants';
 
 /**
- * Load the words, this action starts the request saga
+ * Load the strings, this action starts the request saga
  *
- * @return {object} An action object with a type of LOAD_WORDS
+ * @return {object} An action object with a type of LOAD_STRINGS
  */
-export function loadWords() {
+export function loadStrings() {
   return {
-    type: LOAD_WORDS,
+    type: LOAD_STRINGS,
   };
 }
 
 /**
- * Dispatched when the words are loaded by the request saga
+ * Dispatched when the strings are loaded by the request saga
  *
- * @param  {array} words array of strings from db
+ * @param  {array} strings array of strings from db
  *
- * @return {object}      An action object with a type of LOAD_WORDS_SUCCESS passing the repos
+ * @return {object}      An action object with a type of LOAD_STRINGS_SUCCESS passing the repos
  */
-export function wordsLoaded(words) {
+export function stringsLoaded(strings) {
   return {
-    type: LOAD_WORDS_SUCCESS,
-    words,
+    type: LOAD_STRINGS_SUCCESS,
+    strings,
   };
 }
 
 /**
- * Dispatched when loading the words fails
+ * Dispatched when loading the strings fails
  *
  * @param  {object} error The error
  *
- * @return {object}       An action object with a type of LOAD_WORDS_ERROR passing the error
+ * @return {object}       An action object with a type of LOAD_STRINGS_ERROR passing the error
  */
-export function wordLoadingError(error) {
+export function stringLoadingError(error) {
   return {
-    type: LOAD_WORDS_ERROR,
+    type: LOAD_STRINGS_ERROR,
+    error,
+  };
+}
+
+export function addString(id, string) {
+  return {
+    type: ADD_STRING,
+    id,
+    string,
+    notification: `Adding ${string} to our list...`,
+  };
+}
+
+export function stringAdded(id, string) {
+  return {
+    type: ADD_STRING_SUCCESS,
+    notification: `You've sucessfully added a string!`,
+    id,
+    string,
+  };
+}
+
+export function stringAddingError(error) {
+  return {
+    type: ADD_STRING_ERROR,
     error,
   };
 }

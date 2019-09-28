@@ -1,5 +1,5 @@
 /**
- * Asynchronously loads the component for WordListPage
+ * Asynchronously loads the component for StringListPage
  */
 
 import loadable from 'utils/loadable';

@@ -9,11 +9,12 @@
 
 import produce from 'immer';
 import {
-  LOAD_WORDS_SUCCESS,
-  LOAD_WORDS,
-  LOAD_WORDS_ERROR,
-  ADD_WORD_SUCCESS,
-  ADD_WORD_ERROR,
+  LOAD_STRINGS_SUCCESS,
+  LOAD_STRINGS,
+  LOAD_STRINGS_ERROR,
+  ADD_STRING,
+  ADD_STRING_SUCCESS,
+  ADD_STRING_ERROR,
   CLEAR_NOTIFICATION,
 } from './constants';
 
@@ -21,7 +22,7 @@ import {
 export const initialState = {
   loading: true,
   error: false,
-  words: null,
+  strings: null,
   notification: false,
 };
 
@@ -29,42 +30,49 @@ export const initialState = {
 const appReducer = (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {
-      case LOAD_WORDS:
+      case LOAD_STRINGS: {
         draft.loading = true;
         draft.error = false;
-        draft.words = null;
+        draft.strings = null;
         break;
+      }
 
-      case LOAD_WORDS_SUCCESS:
-        draft.words = action.words;
+      case LOAD_STRINGS_SUCCESS: {
+        draft.strings = action.strings;
         draft.loading = false;
         break;
+      }
 
-      case LOAD_WORDS_ERROR:
+      case LOAD_STRINGS_ERROR: {
         draft.error = action.error;
         draft.loading = false;
         break;
+      }
 
-      case ADD_WORD:
+      case ADD_STRING: {
         draft.notification = action.notification;
         draft.error = false;
         break;
+      }
 
-      case ADD_WORD_SUCCESS:
-        draft.words.unshift(action.word);
-        draft.notification = action.notification;
+      case ADD_STRING_SUCCESS: {
+        const { id, string, notification } = action;
+        draft.strings.unshift({ id, string });
+        draft.notification = notification;
         draft.error = false;
         break;
-
-      case ADD_WORD_ERROR:
+      }
+      case ADD_STRING_ERROR: {
         draft.error = action.error;
         draft.notification = false;
         break;
+      }
 
-      case CLEAR_NOTIFICATION:
+      case CLEAR_NOTIFICATION: {
         draft.notification = false;
         draft.error = false;
         break;
+      }
     }
   });
 

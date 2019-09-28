@@ -7,42 +7,42 @@ import injectSaga from 'utils/injectSaga';
 import saga from 'containers/App/saga';
 import { createStructuredSelector } from 'reselect';
 import {
-  makeSelectWords,
+  makeSelectStrings,
   makeSelectLoading,
   makeSelectError,
 } from 'containers/App/selectors';
-import { loadWords } from 'containers/App/actions';
+import { loadStrings } from 'containers/App/actions';
 import H2 from 'components/H2';
-import PageWrapper from './PageWrapper';
-import WordList from './WordList';
-import WordDisplay from './WordDisplay';
+import PageWrapper from 'components/PageWrapper';
+import StringList from './StringList';
+import StringDisplay from './StringDisplay';
 
 const key = 'global';
 
-class WordListPage extends Component {
+class StringListPage extends Component {
   async componentDidMount() {
-    if (!this.props.words) {
-      await this.props.loadWords();
+    if (!this.props.strings || this.props.error) {
+      await this.props.loadStrings();
     }
   }
 
   render() {
-    const { loading, error, words } = this.props;
+    const { loading, error, strings } = this.props;
     return loading ? (
       <h1>loading</h1>
     ) : (
       <PageWrapper>
-        <H2>Word List</H2>
+        <H2>String List</H2>
         {error ? (
           <h1>{error}</h1>
         ) : (
-          <WordList>
-            {words.map((w, i) => (
-              <WordDisplay key={i} i={i}>
-                <p>{w}</p>
-              </WordDisplay>
+          <StringList>
+            {strings.map(({ id, string }, i) => (
+              <StringDisplay key={id} i={i}>
+                <p>{string}</p>
+              </StringDisplay>
             ))}
-          </WordList>
+          </StringList>
         )}
       </PageWrapper>
     );
@@ -50,13 +50,13 @@ class WordListPage extends Component {
 }
 
 const mapStateToProps = createStructuredSelector({
-  words: makeSelectWords(),
+  strings: makeSelectStrings(),
   loading: makeSelectLoading(),
   error: makeSelectError(),
 });
 
 const mapDispatchToProps = {
-  loadWords: () => loadWords(),
+  loadStrings: () => loadStrings(),
 };
 
 const withSaga = injectSaga({ key, saga });
@@ -72,4 +72,4 @@ export default compose(
   withReducer,
   withConnect,
   withSaga,
-)(WordListPage);
+)(StringListPage);

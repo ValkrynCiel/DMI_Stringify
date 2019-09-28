@@ -16,10 +16,10 @@ const makeSelectError = () =>
     globalState => globalState.error,
   );
 
-const makeSelectWords = () =>
+const makeSelectStrings = () =>
   createSelector(
     selectGlobal,
-    globalState => globalState.words,
+    globalState => globalState.strings,
   );
 
 const makeSelectLocation = () =>
@@ -31,6 +31,6 @@ const makeSelectLocation = () =>
 export {
   makeSelectLoading,
   makeSelectError,
-  makeSelectWords,
+  makeSelectStrings,
   makeSelectLocation,
 };

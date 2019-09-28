@@ -6,4 +6,5 @@ export default styled.div`
   flex-direction: column;
   align-items: center;
   margin: auto;
+  padding: 40px 0;
 `;

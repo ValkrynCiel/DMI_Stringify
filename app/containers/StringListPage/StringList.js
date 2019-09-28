@@ -5,5 +5,4 @@ export default styled.div`
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-self: flex-start;
-  margin-bottom: 40px;
 `;

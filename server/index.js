@@ -14,13 +14,13 @@ const ngrok =
 const { resolve } = require('path');
 
 const app = express();
-const wordsRoutes = require('./routes/words');
+const stringsRoutes = require('./routes/strings');
 app.use(express.json());
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
 
-app.use('/api/words', wordsRoutes);
+app.use('/api/strings', stringsRoutes);
 
 /** general error handler */
 

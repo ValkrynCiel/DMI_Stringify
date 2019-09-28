@@ -19,7 +19,11 @@ export default styled.div`
     text-overflow: ellipsis;
     white-space: nowrap;
     margin: auto;
+    padding: 20px 0px;
     width: 80%;
+  }
+  &:hover {
+    overflow-y: scroll;
   }
   &:hover p {
     text-overflow: clip;
