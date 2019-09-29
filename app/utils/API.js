@@ -1,20 +1,16 @@
 import axios from 'axios';
 
 class API {
-  static API_URL = 'http://localhost:3000/api/strings';
+  static API_URL = 'http://localhost:3010/api/strings';
 
   static async getStrings() {
     try {
       const { data } = await axios.get(this.API_URL);
-
-      if (!data.strings) {
-        throw Error('Oops! Something went wrong on our part.');
-      }
       return data.strings;
     } catch (err) {
       if (err.message.includes('Network Error')) {
         throw Error(
-          'Uh oh. You may be offline or you may have stopped the server.',
+          `Oops! We couldn't connect to the server. Is the server running on port 5000?`,
         );
       }
       throw err;
@@ -29,7 +25,9 @@ class API {
       });
       return res.strings;
     } catch (err) {
-      throw Error('something went wrong');
+      throw Error(
+        `Oops! This string couldn't be sent. Is the server running on port 5000?`,
+      );
     }
   }
 }

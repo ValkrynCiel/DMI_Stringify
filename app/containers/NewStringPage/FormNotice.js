@@ -7,5 +7,6 @@ export default styled.p`
   color: #EB5160;
   bottom: -40px;
   font-size: 18px;
-  left: 20%;
+  left: 50%;
+  transform: translateX(-50%);
 `;

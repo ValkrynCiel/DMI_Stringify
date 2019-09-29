@@ -74,9 +74,13 @@ export function addString(id, string) {
 }
 
 export function stringAdded(id, string) {
+  const notification =
+    string.length > 30
+      ? `Nice. That's a long string!`
+      : `Success! You've added "${string}" to the list!`;
   return {
     type: ADD_STRING_SUCCESS,
-    notification: `You've sucessfully added a string!`,
+    notification,
     id,
     string,
   };
@@ -86,5 +90,11 @@ export function stringAddingError(error) {
   return {
     type: ADD_STRING_ERROR,
     error,
+  };
+}
+
+export function clearNotification() {
+  return {
+    type: CLEAR_NOTIFICATION,
   };
 }

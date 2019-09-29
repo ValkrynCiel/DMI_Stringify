@@ -2,13 +2,18 @@
  * Gets strings from Node.js server
  */
 
-import { put, takeLatest, takeEvery, all } from 'redux-saga/effects';
-import { LOAD_STRINGS, ADD_STRING } from 'containers/App/constants';
+import { put, takeLatest, takeEvery, all, delay} from 'redux-saga/effects';
+import {
+  LOAD_STRINGS,
+  ADD_STRING,
+  ADD_STRING_SUCCESS,
+} from 'containers/App/constants';
 import {
   stringsLoaded,
   stringLoadingError,
   stringAdded,
   stringAddingError,
+  clearNotification,
 } from 'containers/App/actions';
 
 import API from 'utils/API';
@@ -44,9 +49,22 @@ function* watchPostNewString() {
   yield takeEvery(ADD_STRING, postNewString);
 }
 
+function* clearAddSuccess() {
+  yield delay(2500);
+  yield put(clearNotification());
+}
+
+function* watchClearAddSuccess() {
+  yield takeLatest(ADD_STRING_SUCCESS, clearAddSuccess);
+}
+
 /**
  * Root saga manages watcher lifecycle
  */
 export default function* rootSaga() {
-  yield all([watchGetStringList(), watchPostNewString()]);
+  yield all([
+    watchGetStringList(),
+    watchPostNewString(),
+    watchClearAddSuccess(),
+  ]);
 }

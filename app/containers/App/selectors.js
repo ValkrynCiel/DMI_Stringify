@@ -22,6 +22,12 @@ const makeSelectStrings = () =>
     globalState => globalState.strings,
   );
 
+const makeSelectNotification = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.notification,
+  );
+
 const makeSelectLocation = () =>
   createSelector(
     selectRouter,
@@ -32,5 +38,6 @@ export {
   makeSelectLoading,
   makeSelectError,
   makeSelectStrings,
+  makeSelectNotification,
   makeSelectLocation,
 };

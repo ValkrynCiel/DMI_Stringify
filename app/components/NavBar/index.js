@@ -4,6 +4,7 @@ import NavBarWrapper from './NavBarWrapper';
 import CustomNavLink from './CustomNavLink';
 import NavLinkGroup from './NavLinkGroup';
 import HomeLink from './HomeLink';
+import HomeImage from './HomeImage';
 
 export default function NavBar() {
   const activeStyle = {
@@ -12,7 +13,11 @@ export default function NavBar() {
 
   return (
     <NavBarWrapper>
-      <HomeLink to="/" />
+      <HomeLink to="/">
+        <HomeImage>
+          <p>S</p>
+        </HomeImage>
+      </HomeLink>
       <NavLinkGroup>
         <CustomNavLink exact to="/strings" activeStyle={activeStyle}>
           String List

@@ -9,7 +9,7 @@ export default styled.input`
   top: calc((200px - 100px) / 2);
   left: calc((200px - 100px) / 2);
   border: none;
-  padding: 30px 60px;
+  padding: 0px 60px;
   font-size: 30px;
   color: teal;
   background-color: lemonchiffon;

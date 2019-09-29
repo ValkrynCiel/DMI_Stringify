@@ -6,6 +6,7 @@ export default styled(NavLink)`
   margin-right: 50px;
   font-size: 25px;
   display: block;
+  user-select: none;
   &:after {
     bottom: -3px;
     display: block;

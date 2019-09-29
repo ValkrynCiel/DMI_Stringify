@@ -57,7 +57,9 @@ const appReducer = (state = initialState, action) =>
 
       case ADD_STRING_SUCCESS: {
         const { id, string, notification } = action;
-        draft.strings.unshift({ id, string });
+        if (draft.strings) {
+          draft.strings.unshift({ id, string });
+        }
         draft.notification = notification;
         draft.error = false;
         break;

@@ -1,9 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import injectSaga from 'utils/injectSaga';
-import saga from 'containers/App/saga';
-import { addString } from 'containers/App/actions';
 import getId from 'utils/id';
 import Arrow from './Arrow';
 import Form from './Form';
@@ -11,9 +6,7 @@ import Button from './Button';
 import Input from './Input';
 import FormNotice from './FormNotice';
 
-const key = 'global';
-
-class NewStringForm extends Component {
+export default class NewStringForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,15 +19,21 @@ class NewStringForm extends Component {
 
   async handleSubmit(e) {
     e.preventDefault();
+    // string validation
     if (!this.state.string) {
       this.setState({
         tooShort: true,
       });
-    } else {
-      await this.props.addString(getId(),this.state.string);
+      return;
+    }
+
+    await this.props.handleAddString(getId(),this.state.string);
+    if (!this.props.err) {
       this.setState({
         string: '',
       });
+    } else {
+      console.log(this.props.err);
     }
   }
 
@@ -67,19 +66,3 @@ class NewStringForm extends Component {
     );
   }
 }
-
-const mapDispatchToProps = {
-  addString: (id, string) => addString(id, string),
-};
-
-const withSaga = injectSaga({ key, saga });
-
-const withConnect = connect(
-  null,
-  mapDispatchToProps,
-);
-
-export default compose(
-  withConnect,
-  withSaga,
-)(NewStringForm);

@@ -5,26 +5,21 @@
  *
  */
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
+import H2 from 'components/H2';
+import PageWrapper from 'components/PageWrapper';
 
-const trans = keyframes`
-  0% {
-    background-color: black;
-  }
-  100% {
-    background-color: white;
-  }
-`;
-
-const Circle = styled.div`
-  height: 200px;
-  width: 200px;
-  background-color: black;
-  border-radius: 50%;
-  margin: auto;
-  animation: ${trans} 2s ease-in-ease-out infinite;
+const BrandName = styled.span`
+  color: teal;
 `;
 
 export default function HomePage() {
-  return <Circle />;
+  return (
+    <PageWrapper>
+      <H2>
+        Welcome to <BrandName>Stringify</BrandName>
+        <br /> your home for string collection.
+      </H2>
+    </PageWrapper>
+  );
 }
