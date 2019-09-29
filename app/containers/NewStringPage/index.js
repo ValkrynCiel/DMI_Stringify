@@ -13,7 +13,7 @@ import {
 } from 'containers/App/selectors';
 import H2 from 'components/H2';
 import PageWrapper from 'components/PageWrapper';
-import SuccessNote from 'components/SuccessNote';
+import Notification from 'components/Notification';
 import NewStringForm from './NewStringForm';
 
 const key = 'global';
@@ -24,19 +24,19 @@ class NewStringPage extends Component {
     this.addString = this.addString.bind(this);
   }
 
-  addString(id, string) {
-    this.props.addString(id, string);
+  async addString(id, string) {
+    await this.props.addString(id, string);
   }
 
   render() {
-    const {note, error} = this.props;
+    const { error, note } = this.props;
     return (
       <PageWrapper>
         <H2>Add a new string</H2>
-        <NewStringForm err={error} handleAddString={this.addString} />
-        <SuccessNote note={note}>
-          <p>{note}</p>
-        </SuccessNote>
+        <NewStringForm handleAddString={this.addString} />
+        <Notification err={error} show={note || error}>
+          <p>{note || error}</p>
+        </Notification>
       </PageWrapper>
     );
   }

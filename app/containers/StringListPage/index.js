@@ -13,6 +13,7 @@ import {
 } from 'containers/App/selectors';
 import { loadStrings } from 'containers/App/actions';
 import H2 from 'components/H2';
+import Notification from 'components/Notification';
 import PageWrapper from 'components/PageWrapper';
 import StringList from './StringList';
 import StringDisplay from './StringDisplay';
@@ -26,24 +27,29 @@ class StringListPage extends Component {
     }
   }
 
+  displayStringList(strings) {
+    // display strings unless there is an error
+    return (
+      <StringList>
+        {strings &&
+          strings.map(({ id, string }, i) => (
+            <StringDisplay key={id} i={i}>
+              <p>{string}</p>
+            </StringDisplay>
+          ))}
+      </StringList>
+    );
+  }
+
   render() {
     const { loading, error, strings } = this.props;
-    return loading ? (
-      <h1>loading</h1>
-    ) : (
+    return (
       <PageWrapper>
         <H2>String List</H2>
-        {error ? (
-          <h1>{error}</h1>
-        ) : (
-          <StringList>
-            {strings.map(({ id, string }, i) => (
-              <StringDisplay key={id} i={i}>
-                <p>{string}</p>
-              </StringDisplay>
-            ))}
-          </StringList>
-        )}
+        {this.displayStringList(strings)}
+        <Notification show={error || loading} err={error}>
+          <p>{error || (loading && 'Loading...')}</p>
+        </Notification>
       </PageWrapper>
     );
   }

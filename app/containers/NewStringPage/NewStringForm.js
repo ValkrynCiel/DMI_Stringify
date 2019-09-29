@@ -24,16 +24,12 @@ export default class NewStringForm extends Component {
       this.setState({
         tooShort: true,
       });
-      return;
-    }
+    } else {
+      await this.props.handleAddString(getId(), this.state.string);
 
-    await this.props.handleAddString(getId(),this.state.string);
-    if (!this.props.err) {
       this.setState({
         string: '',
       });
-    } else {
-      console.log(this.props.err);
     }
   }
 

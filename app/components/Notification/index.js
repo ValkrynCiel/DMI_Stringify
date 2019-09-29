@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-// BUG: absolute and fixed positioning break the notification and I don't know why
 export default styled.div`
   position: absolute;
   z-index: 10;
@@ -11,11 +10,11 @@ export default styled.div`
   height: 80px;
   border: 1px solid #33658A;
   border-radius: 10px;
-  background-color: teal;
+  background-color: ${props => (props.err ? 'red' : 'teal')};
   color: white;
   font-size: 20px;
   display: flex;
-  visibility: ${props => (props.note ? 'visible' : 'hidden')};
+  visibility: ${props => (props.show ? 'visible' : 'hidden')};
   p {
     margin: auto;
   }
