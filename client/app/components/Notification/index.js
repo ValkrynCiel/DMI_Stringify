@@ -10,12 +10,13 @@ export default styled.div`
   height: 80px;
   border: 1px solid #33658A;
   border-radius: 10px;
-  background-color: ${props => (props.err ? '#EB5160' : 'teal')};
+  background-color: ${props => (props.error ? '#EB5160' : 'teal')};
   color: white;
   font-size: 20px;
   display: flex;
   visibility: ${props => (props.show ? 'visible' : 'hidden')};
   p {
     margin: auto;
+    width: 95%;
   }
 `;

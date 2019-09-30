@@ -23,6 +23,7 @@ class NewStringPage extends Component {
     super(props);
     this.addString = this.addString.bind(this);
   }
+  /** index.js is connected to redux but the form needs an event handler to call addString() */
 
   async addString(id, string) {
     await this.props.addString(id, string);
@@ -34,7 +35,7 @@ class NewStringPage extends Component {
       <PageWrapper>
         <H2>Add a new string</H2>
         <NewStringForm handleAddString={this.addString} />
-        <Notification err={error} show={note || error}>
+        <Notification error={error} show={note || error}>
           <p>{note || error}</p>
         </Notification>
       </PageWrapper>

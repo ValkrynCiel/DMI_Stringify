@@ -1,20 +1,3 @@
-/*
- * App Actions
- *
- * Actions change things in your application
- * Since this boilerplate uses a uni-directional data flow, specifically redux,
- * we have these actions which are the only way your application interacts with
- * your application state. This guarantees that your state is up to date and nobody
- * messes it up weirdly somewhere.
- *
- * To add a new Action:
- * 1) Import your constant
- * 2) Add a function like this:
- *    export function yourAction(var) {
- *        return { type: YOUR_ACTION_CONSTANT, var: var }
- *    }
- */
-
 import {
   LOAD_STRINGS,
   LOAD_STRINGS_SUCCESS,
@@ -64,6 +47,12 @@ export function stringLoadingError(error) {
   };
 }
 
+/**
+ * Add a new string, this action starts the request saga
+ *
+ * @return {object} An action object with a type of ADD_STRING, passes id and string as well as a notification for user alerts
+ */
+
 export function addString(id, string) {
   return {
     type: ADD_STRING,
@@ -73,6 +62,11 @@ export function addString(id, string) {
   };
 }
 
+/**
+ * Dispatched when a new string successfully is posted
+ *
+ * @return {object} An action object with a type of ADD_STRING_SUCCESS, passes id and string as well as a notification for user alerts
+ */
 export function stringAdded(id, string) {
   const notification =
     string.length > 30
@@ -86,12 +80,24 @@ export function stringAdded(id, string) {
   };
 }
 
+/**
+ * Dispatched when an error occurs when trying to post a string
+ *
+ * @return {object} An action object with a type of ADD_STRING_ERROR, passes in the error message
+ */
+
 export function stringAddingError(error) {
   return {
     type: ADD_STRING_ERROR,
     error,
   };
 }
+
+/**
+ * Dispatched after an action with a notification is dispatched. This removes the notification after a couple seconds
+ *
+ * @return {object} An action object with a type of CLEAR_NOTIFICATION
+ */
 
 export function clearNotification() {
   return {

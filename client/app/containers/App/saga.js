@@ -19,10 +19,9 @@ import {
 import API from 'utils/API';
 
 /**
- * Github repos request/response handler
+ * requests the string list from the server
  */
 function* getStringList() {
-  // Select username from store
   try {
     const strings = yield API.getStrings();
     yield put(stringsLoaded(strings));
@@ -31,10 +30,13 @@ function* getStringList() {
   }
 }
 
+/** get string list watcher */
+
 function* watchGetStringList() {
   yield takeLatest(LOAD_STRINGS, getStringList);
 }
 
+/** posts a new string to the server */
 function* postNewString(action) {
   try {
     const { id, string } = action;
@@ -45,15 +47,19 @@ function* postNewString(action) {
   }
 }
 
+/** post new string watcher */
+
 function* watchPostNewString() {
   yield takeEvery(ADD_STRING, postNewString);
 }
 
+/** clears notifications after 2 seconds of them being on the screen */
 function* clearAddSuccess() {
   yield delay(2000);
   yield put(clearNotification());
 }
 
+/** clear notification watcher */
 function* watchClearAddSuccess() {
   yield takeLatest(ADD_STRING_SUCCESS, clearAddSuccess);
 }

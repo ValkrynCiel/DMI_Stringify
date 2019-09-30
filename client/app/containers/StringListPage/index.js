@@ -22,7 +22,8 @@ const key = 'global';
 
 class StringListPage extends Component {
   async componentDidMount() {
-    if (!this.props.strings || this.props.error) {
+    /** only attempt to load strings if they aren't found in redux */
+    if (!this.props.strings) {
       await this.props.loadStrings();
     }
   }
@@ -47,7 +48,7 @@ class StringListPage extends Component {
       <PageWrapper>
         <H2>String List</H2>
         {this.displayStringList(strings)}
-        <Notification show={error || loading} err={error}>
+        <Notification show={error || loading} error={error}>
           <p>{error || (loading && 'Loading...')}</p>
         </Notification>
       </PageWrapper>

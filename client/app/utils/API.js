@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 class API {
-  static API_URL = 'http://localhost:3000/api/strings';
+  static API_URL = 'http://localhost:3001/api/strings';
 
-  static err = `Oops! Something went wrong. Check that you are online and/or that the server is running on port 5000.`;
+  static err = `Oops! Something went wrong. Check that you are online and/or that the server is running on port 3001.`;
 
   static async getStrings() {
     try {
