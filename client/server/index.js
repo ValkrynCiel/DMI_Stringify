@@ -14,24 +14,9 @@ const ngrok =
 const { resolve } = require('path');
 
 const app = express();
-const stringsRoutes = require('./routes/strings');
-app.use(express.json());
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
-
-app.use('/api/strings', stringsRoutes);
-
-/** general error handler */
-
-app.use((err, req, res, next) => {
-  res.status(err.status || 500);
-
-  return res.json({
-    status: err.status,
-    message: err.message,
-  });
-});
 
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {
