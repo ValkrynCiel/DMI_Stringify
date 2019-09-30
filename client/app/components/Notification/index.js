@@ -8,7 +8,7 @@ export default styled.div`
   transform: translateX(-50%);
   width: 600px;
   height: 80px;
-  border: 1px solid #33658A;
+  border: 1px solid #33658a;
   border-radius: 10px;
   background-color: ${props => (props.error ? '#EB5160' : 'teal')};
   color: white;

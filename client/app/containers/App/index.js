@@ -1,6 +1,6 @@
 /**
  * App.js
- * all routes are exact: 
+ * all routes are exact:
  *    "/": home,
  *    "/strings": stringlistpage
  *    "/strings/new": newstringpage

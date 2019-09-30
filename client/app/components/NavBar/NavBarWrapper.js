@@ -4,7 +4,7 @@ export default styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #EB5160;
+  background-color: #eb5160;
   position: fixed;
   top: 0;
   left: 0;

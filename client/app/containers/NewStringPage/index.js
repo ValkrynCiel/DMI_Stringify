@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import injectReducer from 'utils/injectReducer';
@@ -18,15 +19,15 @@ import NewStringForm from './NewStringForm';
 
 const key = 'global';
 
-class NewStringPage extends Component {
+export class NewStringPage extends Component {
   constructor(props) {
     super(props);
-    this.addString = this.addString.bind(this);
+    this.onAddString = this.onAddString.bind(this);
   }
   /** index.js is connected to redux but the form needs an event handler to call addString() */
 
-  async addString(id, string) {
-    await this.props.addString(id, string);
+  async onAddString(id, string) {
+    await this.props.onAddString(id, string);
   }
 
   render() {
@@ -34,7 +35,7 @@ class NewStringPage extends Component {
     return (
       <PageWrapper>
         <H2>Add a new string</H2>
-        <NewStringForm handleAddString={this.addString} />
+        <NewStringForm handleAddString={this.onAddString} />
         <Notification error={error} show={note || error}>
           <p>{note || error}</p>
         </Notification>
@@ -43,13 +44,19 @@ class NewStringPage extends Component {
   }
 }
 
-const mapStateToProps = createStructuredSelector({
+NewStringPage.propTypes = {
+  onAddString: PropTypes.func,
+  note: PropTypes.string,
+  error: PropTypes.string,
+};
+
+export const mapStateToProps = createStructuredSelector({
   error: makeSelectError(),
   note: makeSelectNotification(),
 });
 
-const mapDispatchToProps = {
-  addString: (id, string) => addString(id, string),
+export const mapDispatchToProps = {
+  onAddString: (id, string) => addString(id, string),
 };
 
 const withSaga = injectSaga({ key, saga });

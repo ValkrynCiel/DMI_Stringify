@@ -1,8 +1,10 @@
 /** simple server built in Express runs on port 3001 */
 
 const express = require('express');
+const cors = require('cors');
 
 const app = express();
+app.use(cors());
 
 const stringsRoutes = require('./routes/strings');
 app.use(express.json()); 

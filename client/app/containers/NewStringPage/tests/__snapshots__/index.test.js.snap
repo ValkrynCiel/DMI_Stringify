@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NewStringPage /> should render and match the snapshot 1`] = `
+<div
+  class="PageWrapper-az8zmc-0 lideoK"
+>
+  <h2
+    class="H2-egphza-0 dmqvmM"
+  >
+    Add a new string
+  </h2>
+  <form
+    class="Form-oqd9np-0 chyjSi"
+  >
+    <input
+      autocomplete="off"
+      class="Input-sc-6bz4w7-0 dQPAAL"
+      data-testid="input"
+      name="string"
+      value=""
+    />
+    <button
+      class="Button-pa0xyh-0 gepdYz"
+      data-testid="submit"
+      type="submit"
+    >
+      <div
+        class="Arrow-sc-1eqghur-0 gyCkDR"
+      />
+    </button>
+  </form>
+  <div
+    class="Notification-sc-1wuue35-0 iXONZG"
+  >
+    <p />
+  </div>
+</div>
+`;

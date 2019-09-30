@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import getId from 'utils/id';
 import Arrow from './Arrow';
 import Form from './Form';
@@ -44,21 +45,27 @@ export default class NewStringForm extends Component {
     return (
       <Form onSubmit={this.handleSubmit}>
         <Input
-          id="string"
+          data-testid="input"
           name="string"
           value={this.state.string}
           onChange={this.handleChange}
           autoComplete="off"
         />
-        <Button type="submit">
+        <Button type="submit" data-testid="submit">
           <Arrow />
         </Button>
-        <FormNotice show={this.state.tooShort}>
-          Looks like you didn&#39;t type anything before sending.
-          <br />
-          Try typing a letter, a word, or a whole paragraph!
-        </FormNotice>
+        {this.state.tooShort && (
+          <FormNotice data-testid="form-notice">
+            Looks like you didn&#39;t type anything before sending.
+            <br />
+            Try typing a letter, a word, or a whole paragraph!
+          </FormNotice>
+        )}
       </Form>
     );
   }
 }
+
+NewStringForm.propTypes = {
+  handleAddString: PropTypes.func,
+};

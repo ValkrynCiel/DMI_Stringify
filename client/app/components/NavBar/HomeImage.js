@@ -9,7 +9,7 @@ export default styled.div`
   display: flex;
   border-radius: 5px;
   display: flex;
-  border: 1px solid #33658A;
+  border: 1px solid #33658a;
   p {
     margin: auto;
     margin-top: 6px;

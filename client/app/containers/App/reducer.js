@@ -21,9 +21,9 @@ import {
 // The initial state of the App
 export const initialState = {
   loading: true,
-  error: false,
+  error: null,
   strings: null,
-  notification: false,
+  notification: null,
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -32,7 +32,7 @@ const appReducer = (state = initialState, action) =>
     switch (action.type) {
       case LOAD_STRINGS: {
         draft.loading = true;
-        draft.error = false;
+        draft.error = null;
         draft.strings = null;
         break;
       }
@@ -51,7 +51,7 @@ const appReducer = (state = initialState, action) =>
 
       case ADD_STRING: {
         draft.notification = action.notification;
-        draft.error = false;
+        draft.error = null;
         break;
       }
 
@@ -61,17 +61,17 @@ const appReducer = (state = initialState, action) =>
           draft.strings.unshift({ id, string });
         }
         draft.notification = notification;
-        draft.error = false;
+        draft.error = null;
         break;
       }
       case ADD_STRING_ERROR: {
         draft.error = action.error;
-        draft.notification = false;
+        draft.notification = null;
         break;
       }
 
       case CLEAR_NOTIFICATION: {
-        draft.notification = false;
+        draft.notification = null;
         draft.error = false;
         break;
       }

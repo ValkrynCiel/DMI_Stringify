@@ -4,7 +4,7 @@ export default styled.div`
   height: 125px;
   width: 300px;
   border-radius: 20px;
-  background-color: ${props => (props.i % 2 === 1 ? 'teal' : '#33658A')};
+  background-color: ${props => (props.i % 2 === 1 ? 'teal' : '#33658a')};
   border-bottom: rebeccapurple solid 2px;
   font-size: 20px;
   box-shadow: 0px 10px 10px rgba(196, 149, 65, 1);

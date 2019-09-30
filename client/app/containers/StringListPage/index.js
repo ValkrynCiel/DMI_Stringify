@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import injectReducer from 'utils/injectReducer';
@@ -55,6 +56,13 @@ class StringListPage extends Component {
     );
   }
 }
+
+StringListPage.propTypes = {
+  strings: PropTypes.arrayOf(PropTypes.object),
+  loading: PropTypes.bool,
+  error: PropTypes.string,
+  loadStrings: PropTypes.func,
+};
 
 const mapStateToProps = createStructuredSelector({
   strings: makeSelectStrings(),
