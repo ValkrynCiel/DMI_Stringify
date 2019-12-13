@@ -1,4 +1,4 @@
-# DMI_takehome
+# DMI_Stringify
 A string collection app with a backend that consists of a simple Node.js server containing a non-persistent array of strings. 
 
 Users can post new words to a server and the string list will update. Redux Saga is used to handle fetching and posting data as well as for user notifications and errors.
